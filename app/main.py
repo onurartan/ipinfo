@@ -11,6 +11,10 @@ GEOIP_DATABASE_PATH = './db/GeoLite2-City.mmdb'
 reader = Reader(GEOIP_DATABASE_PATH)
 
 
+@app.get("/")
+def index():
+    return {"message": "free ip address city country etc learning api"}
+
 @app.get("/getip")
 def get_client_ip(request: Request):
     client_ip = request.client.host
