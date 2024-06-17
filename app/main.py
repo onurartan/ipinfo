@@ -35,7 +35,7 @@ def index():
 def get_client_ip(request: Request):
     client_ip = request.client.host
 
-    return client_ip
+    return {"ip_address": client_ip}
 
 
 @app.get("/yourinfo")
