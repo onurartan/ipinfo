@@ -48,7 +48,8 @@ def get_client_ip(request: Request):
             "country": country,
             "city": city,
             "latitude": latitude,
-            "longitude": longitude
+            "longitude": longitude,
+            "response": response
         }
     except Exception as e:
         return {"error": str(e)}
