@@ -1,4 +1,5 @@
 from fastapi import FastAPI, Request
+from fastapi.middleware.cors import CORSMiddleware
 from geoip2.database import Reader
 
 app = FastAPI()
@@ -10,6 +11,15 @@ GEOIP_DATABASE_PATH = './db/GeoLite2-City.mmdb'
 # GeoLite2 veritabanı okuyucusunu oluşturun
 reader = Reader(GEOIP_DATABASE_PATH)
 
+
+# CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"], 
+    allow_credentials=True,
+    allow_methods=["*"], 
+    allow_headers=["*"],
+)
 
 @app.get("/")
 def index():
