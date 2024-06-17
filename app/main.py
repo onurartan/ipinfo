@@ -10,6 +10,7 @@ GEOIP_DATABASE_PATH = './db/GeoLite2-City.mmdb'
 # GeoLite2 veritabanı okuyucusunu oluşturun
 reader = Reader(GEOIP_DATABASE_PATH)
 
+
 @app.get("/getip")
 def get_client_ip(request: Request):
     client_ip = request.client.host
