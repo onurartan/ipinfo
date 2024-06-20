@@ -4,7 +4,6 @@ def parse_user_agent(user_agent_string):
     os_type = "Unknown"
     browser_name = "Unknown"
     browser_version = "Unknown"
-    device_model = "Unknown"
 
     # Check for Windows OS
     if 'Windows' in user_agent_string:
@@ -68,7 +67,6 @@ def parse_user_agent(user_agent_string):
         "os_type": os_type,
         "browser_name": browser_name,
         "browser_version": browser_version,
-        "device_model": device_model
     }
 
 # Test with example user agent strings
@@ -76,10 +74,10 @@ user_agent_string_1 = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537
 user_agent_string_2 = "Mozilla/5.0 (Linux; Android 10; SM-G960F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.181 Mobile Safari/537.36"
 user_agent_string_3 = "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1"
 
-parsed_1 = parse_user_agent(user_agent_string_1)
-parsed_2 = parse_user_agent(user_agent_string_2)
-parsed_3 = parse_user_agent(user_agent_string_3)
+# parsed_1 = parse_user_agent(user_agent_string_1)
+# parsed_2 = parse_user_agent(user_agent_string_2)
+# parsed_3 = parse_user_agent(user_agent_string_3)
 
-print(parsed_1)
-print(parsed_2)
-print(parsed_3)
+# print(parsed_1)
+# print(parsed_2)
+# print(parsed_3)
