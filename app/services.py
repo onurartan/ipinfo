@@ -1,4 +1,5 @@
 from geoip2.database import Reader
+from typing import Union
 
 from utils import parse_user_agent
 from .schema import Response, ErrorResponse
@@ -8,7 +9,8 @@ GEOIP_DATABASE_PATH = "./db/GeoLite2-City.mmdb"
 reader = Reader(GEOIP_DATABASE_PATH)
 
 
-def get_ip_info(ip_address: str, user_agent: str) -> Response | ErrorResponse:
+# if you use 3.10 python version -> Response | ErrorResponse
+def get_ip_info(ip_address: str, user_agent: str) -> Union[Response, ErrorResponse]:
     try:
         # Get geographic info from IP address
         response = reader.city(ip_address)
@@ -19,8 +21,8 @@ def get_ip_info(ip_address: str, user_agent: str) -> Response | ErrorResponse:
         continent = response.continent.names["en"]
         time_zone = response.location.time_zone
         postal = response.postal.code
-        isp = response.traits.isp  # ISP bilgisi
-        organization = response.traits.organization  # Organizasyon
+        isp = response.traits.isp
+        organization = response.traits.organization
         reader.close()
 
         data = {
