@@ -6,15 +6,15 @@ class Response(BaseModel):
     success: bool
     status: int
     client_ip: str
-    country: str | None
-    city: str | None
-    latitude: float | None
-    longitude: float | None
-    time_zone: str | None
-    continent: str | None
-    posta_code: str | None
-    isp: str | None
-    organization: str | None
+    country: Optional[str] = None
+    city: Optional[str] = None
+    latitude: Optional[float] = None
+    longitude: Optional[float] = None
+    time_zone: Optional[str] = None
+    continent: Optional[str] = None
+    posta_code: Optional[str] = None
+    isp: Optional[str] = None
+    organization: Optional[str] = None
     user_agent: dict
 
 
