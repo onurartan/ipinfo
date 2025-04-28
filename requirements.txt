@@ -1,3 +1,6 @@
 geoip2
 fastapi
 uvicorn
+user-agents
+pydantic
+slowapi
