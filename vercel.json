@@ -1,6 +1,5 @@
 {
     "version": 2,
-    "maxDuration": 30,
     "builds": [
       {
         "src": "app/main.py",
