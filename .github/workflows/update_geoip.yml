@@ -1,0 +1,35 @@
+name: Update GeoIP Database
+
+on:
+  schedule:
+    # It runs every three days at 3:00 AM.
+    - cron: "0 3 */3 * *"
+  workflow_dispatch:
+
+jobs:
+  update-db:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Download GeoLite2 City Database
+        run: |
+          mkdir -p db
+          rm -f db/GeoLite2-City.mmdb
+          curl -L "https://github.com/P3TERX/GeoLite.mmdb/raw/download/GeoLite2-City.mmdb" -o db/GeoLite2-City.mmdb
+
+      - name: Check for changes
+        id: verify_diff
+        run: |
+          git diff --quiet . || echo "changed=true" >> $GITHUB_OUTPUT
+
+      - name: Commit and Push if changed
+        if: steps.verify_diff.outputs.changed == 'true'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add db/GeoLite2-City.mmdb
+          git commit -m "chore: update GeoIP database [skip ci]"
+          git push
